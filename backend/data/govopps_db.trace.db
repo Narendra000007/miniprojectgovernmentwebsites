@@ -1,3 +1,542 @@
 2026-10-26 22:13:09.841435+05:30 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "insert into users (created_at,email,full_name,username) values (?,?,?,?) [*]returning id"; SQL statement:
 insert into users (created_at,email,full_name,username) values (?,?,?,?) returning id [42000-224]
+2026-10-27 01:06:18.599349+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (id, username, full_name, email) VALUES\000a(1, 'demo_user', 'Demo User', 'demo@govopps.in')\000a[*]ON CONFLICT (id) DO NOTHING"; SQL statement:
+INSERT INTO users (id, username, full_name, email) VALUES
+(1, 'demo_user', 'Demo User', 'demo@govopps.in')
+ON CONFLICT (id) DO NOTHING [42000-224]
+2026-10-27 01:06:18.603091+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO user_profiles (id, user_id, highest_qualification, discipline, graduation_year, percentage_or_cgpa, age, category, state_of_residence, preferred_location, preferred_categories, skills_and_interests) VALUES\000a(1, 1, 'B.E./B.Tech', 'Computer Science and Engineering', 2026, 8.00, 22, 'General', 'Karnataka', 'All India', 'RECRUITMENT,INTERNSHIP,FELLOWSHIP,COMPETITIVE_EXAM', 'Java, Full Stack Web Development, Cloud Computing, Algorithms, Data Structures')\000a[*]ON CONFLICT (id) DO NOTHING"; SQL statement:
+INSERT INTO user_profiles (id, user_id, highest_qualification, discipline, graduation_year, percentage_or_cgpa, age, category, state_of_residence, preferred_location, preferred_categories, skills_and_interests) VALUES
+(1, 1, 'B.E./B.Tech', 'Computer Science and Engineering', 2026, 8.00, 22, 'General', 'Karnataka', 'All India', 'RECRUITMENT,INTERNSHIP,FELLOWSHIP,COMPETITIVE_EXAM', 'Java, Full Stack Web Development, Cloud Computing, Algorithms, Data Structures')
+ON CONFLICT (id) DO NOTHING [42000-224]
+2026-10-27 01:06:18.604123+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "10 day"; SQL statement:
+INSERT INTO opportunities (
+    id, title, category, organization, description, eligibility_criteria,
+    required_qualification, allowed_disciplines, min_percentage, max_age,
+    location, application_start_date, application_deadline,
+    official_application_url, source_url, status, is_verified, is_sample_data
+) VALUES
+(
+    1,
+    'ISRO Centralised Recruitment Board - Scientist / Engineer ''SC'' (Computer Science)',
+    'RECRUITMENT',
+    'Indian Space Research Organisation (ISRO)',
+    'Recruitment for the prestigious post of Scientist/Engineer ''SC'' in Level 10 of Pay Matrix across various ISRO centres (URSC Bengaluru, VSSC Thiruvananthapuram, SAC Ahmedabad). Candidates will work on mission-critical aerospace software and satellite telemetry systems.',
+    'B.E./B.Tech or equivalent in Computer Science / IT with first class and aggregate minimum 65% marks or 6.84/10 CGPA. Valid GATE score preferred. Upper age limit is 28 years.',
+    'B.E./B.Tech',
+    'Computer Science, Information Technology',
+    65.0,
+    28,
+    'Bengaluru, Karnataka',
+    CURRENT_DATE - INTERVAL '10 day',
+    CURRENT_DATE + INTERVAL '25 day',
+    'https://www.isro.gov.in/Careers.html',
+    'https://www.isro.gov.in/media_isro/pdf/recruitment_sample.pdf',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    2,
+    'UPSC Civil Services Examination 2027 (IAS, IPS, IFS, IRS)',
+    'RECRUITMENT',
+    'Union Public Service Commission (UPSC)',
+    'National level recruitment for appointment to the prestigious civil services of the Government of India including Indian Administrative Service, Indian Foreign Service, and Indian Police Service.',
+    'A candidate must hold a Graduate degree of any of the Universities incorporated by an Act of the Central or State Legislature in India. Age must be between 21 and 32 years on 1st August of the examination year.',
+    'Any Graduate',
+    'Any Discipline',
+    50.0,
+    32,
+    'All India',
+    CURRENT_DATE - INTERVAL '5 day',
+    CURRENT_DATE + INTERVAL '30 day',
+    'https://upsconline.nic.in',
+    'https://www.upsc.gov.in/examinations/active-exams',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    3,
+    'DRDO Scientist ''B'' Recruitment via RAC (Computer Science & Engineering)',
+    'RECRUITMENT',
+    'Defence Research & Development Organisation (DRDO)',
+    'Recruitment of Scientist ''B'' in Defence Research and Development Organisation under the Ministry of Defence. Work encompasses cyber security, autonomous defense systems, and embedded computing.',
+    'At least first class Bachelor degree in Engineering or Technology in Computer Science & Engineering from a recognized university. Valid GATE score in CS paper is mandatory.',
+    'B.E./B.Tech',
+    'Computer Science, Information Technology, Electronics',
+    60.0,
+    30,
+    'All India',
+    CURRENT_DATE - INTERVAL '20 day',
+    CURRENT_DATE + INTERVAL '6 day',
+    'https://rac.gov.in',
+    'https://drdo.gov.in/careers',
+    'CLOSING_SOON',
+    TRUE,
+    TRUE
+),
+(
+    4,
+    'State Bank of India (SBI) Probationary Officers (PO) Recruitment 2026-27',
+    'RECRUITMENT',
+    'State Bank of India (Central Recruitment & Promotion Dept)',
+    'Recruitment for Probationary Officers in SBI branches across India. Offers structured management training, competitive allowances, and accelerated banking leadership pathways.',
+    'Graduation in any discipline from a recognized University or any equivalent qualification recognized as such by the Central Government. Candidates in final year/semester may apply conditionally.',
+    'Any Graduate',
+    'Any Discipline',
+    50.0,
+    30,
+    'All India',
+    CURRENT_DATE - INTERVAL '15 day',
+    CURRENT_DATE + INTERVAL '18 day',
+    'https://sbi.co.in/web/careers',
+    'https://bank.sbi/careers',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    5,
+    'Karnataka Public Service Commission (KPSC) - Assistant Executive Engineer (Technical)',
+    'RECRUITMENT',
+    'Karnataka Public Service Commission (KPSC)',
+    'State government engineering cadre recruitment under Public Works and Rural Infrastructure Development departments across districts of Karnataka.',
+    'Must possess a Bachelor Degree in Engineering (Civil/Mechanical/Computer/Electrical) from a recognized University in Karnataka. Knowledge of Kannada is required.',
+    'B.E./B.Tech',
+    'Civil, Mechanical, Computer Science, Electrical',
+    55.0,
+    35,
+    'Karnataka',
+    CURRENT_DATE - INTERVAL '30 day',
+    CURRENT_DATE - INTERVAL '2 day',
+    'https://kpsc.kar.nic.in',
+    'https://kpsc.kar.nic.in/notifications',
+    'CLOSED',
+    TRUE,
+    TRUE
+) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more
+2026-10-27 01:06:18.606302+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "14 day"; SQL statement:
+INSERT INTO opportunities (
+    id, title, category, organization, description, eligibility_criteria,
+    required_qualification, allowed_disciplines, min_percentage, max_age,
+    location, application_start_date, application_deadline,
+    official_application_url, source_url, status, is_verified, is_sample_data
+) VALUES
+(
+    6,
+    'National Scholarship Portal (NSP) - Central Sector Scheme for College and University Students',
+    'SCHOLARSHIP',
+    'Department of Higher Education, Ministry of Education, Govt of India',
+    'Financial assistance to meritorious students from economically weaker sections to meet day-to-day educational expenses while pursuing graduate and postgraduate studies. Scholarship amount is Rs. 12,000 to Rs. 20,000 per annum.',
+    'Students above 80th percentile of successful candidates in relevant stream from respective board in Class 12. Pursuing regular degree courses. Parental annual income not exceeding Rs. 4.5 Lakh.',
+    '12th Pass',
+    'Any Discipline',
+    80.0,
+    25,
+    'All India',
+    CURRENT_DATE - INTERVAL '14 day',
+    CURRENT_DATE + INTERVAL '45 day',
+    'https://scholarships.gov.in',
+    'https://www.education.gov.in/scholarships',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    7,
+    'AICTE Pragati Scholarship Scheme for Girl Students (Degree Level)',
+    'SCHOLARSHIP',
+    'All India Council for Technical Education (AICTE)',
+    'Scheme aimed at providing assistance for advancement of girls pursuing technical education. Financial assistance of Rs. 50,000 per annum for tuition fees, purchase of books, equipment, and laptop.',
+    'Female candidate admitted to 1st year of Degree level technical course or 2nd year through lateral entry in an AICTE approved institution. Maximum two girls per family. Family income less than Rs. 8 Lakh per annum.',
+    'B.E./B.Tech',
+    'Engineering, Technology, Architecture, Pharmacy',
+    60.0,
+    30,
+    'All India',
+    CURRENT_DATE - INTERVAL '25 day',
+    CURRENT_DATE + INTERVAL '12 day',
+    'https://www.aicte-pragati-saksham-gov.in',
+    'https://www.aicte-india.org/schemes/students-development-schemes',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    8,
+    'Karnataka State Pre-Matric & Post-Matric State Scholarship Portal (SSP)',
+    'SCHOLARSHIP',
+    'Social Welfare & Backward Classes Welfare Dept, Govt of Karnataka',
+    'Direct benefit transfer (DBT) scholarship for post-matric and professional course students studying in recognized colleges across Karnataka.',
+    'Domicile of Karnataka. Pursuing recognized diploma, graduate, or postgraduate degree from an institution in Karnataka. Valid income and caste certificates required.',
+    'Any Graduate',
+    'Any Discipline',
+    50.0,
+    35,
+    'Karnataka',
+    CURRENT_DATE - INTERVAL '40 day',
+    CURRENT_DATE + INTERVAL '4 day',
+    'https://ssp.postmatric.karnataka.gov.in',
+    'https://karnataka.gov.in/ssp-portal',
+    'CLOSING_SOON',
+    TRUE,
+    TRUE
+) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more
+2026-10-27 01:06:18.607847+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "12 day"; SQL statement:
+INSERT INTO opportunities (
+    id, title, category, organization, description, eligibility_criteria,
+    required_qualification, allowed_disciplines, min_percentage, max_age,
+    location, application_start_date, application_deadline,
+    official_application_url, source_url, status, is_verified, is_sample_data
+) VALUES
+(
+    9,
+    'Prime Minister''s Research Fellowship (PMRF) - Scheme for Direct PhD Admissions',
+    'FELLOWSHIP',
+    'Ministry of Education & IIT Coordination Committee',
+    'PMRF is designed for improving the quality of research in higher educational institutions in India. Attractive financial package: Rs. 70,000 to Rs. 80,000 per month stipend plus Rs. 2 Lakh annual research grant.',
+    'Candidates completed or pursuing final year of B.Tech/Integrated M.Tech from Centrally Funded Technical Institutes (CFTIs/NITs/IITs) with minimum 8.0 CGPA, or other recognized institutes with 8.0 CGPA + valid GATE score.',
+    'B.E./B.Tech',
+    'Computer Science, Engineering, Sciences, Mathematics',
+    80.0,
+    30,
+    'All India',
+    CURRENT_DATE - INTERVAL '12 day',
+    CURRENT_DATE + INTERVAL '28 day',
+    'https://www.pmrf.in',
+    'https://www.pmrf.in/guidelines.html',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    10,
+    'CSIR-UGC Junior Research Fellowship (JRF) & Lectureship',
+    'FELLOWSHIP',
+    'Council of Scientific and Industrial Research (CSIR)',
+    'National level fellowship to identify talented research scholars across Sciences, Engineering, and Computing for doctoral research and university lecturer appointments.',
+    'M.Sc. or equivalent degree / Integrated BS-MS / BS-4 Years / B.E./B.Tech with at least 55% marks for General and 50% for SC/ST/PwD. Age limit 28 years for JRF.',
+    'Post Graduate',
+    'Sciences, Computer Science, Engineering, Mathematics',
+    55.0,
+    28,
+    'All India',
+    CURRENT_DATE - INTERVAL '18 day',
+    CURRENT_DATE + INTERVAL '15 day',
+    'https://csirnet.nta.ac.in',
+    'https://www.csirhrdg.res.in',
+    'ACTIVE',
+    TRUE,
+    TRUE
+) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more
+2026-10-27 01:06:18.610055+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "7 day"; SQL statement:
+INSERT INTO opportunities (
+    id, title, category, organization, description, eligibility_criteria,
+    required_qualification, allowed_disciplines, min_percentage, max_age,
+    location, application_start_date, application_deadline,
+    official_application_url, source_url, status, is_verified, is_sample_data
+) VALUES
+(
+    11,
+    'NITI Aayog Official Internship Scheme for University Students',
+    'INTERNSHIP',
+    'NITI Aayog (National Institution for Transforming India)',
+    'Unpaid/prestigious policy research and technical internship at NITI Aayog headquarters in New Delhi. Interns work directly with domain verticals like Data Analytics, Frontier Technologies, AI, and Public Health.',
+    'Undergraduate students having completed 2nd year or postgraduate students pursuing studies in recognized universities with at least 70% marks in 12th standard. Duration is 6 weeks to 6 months.',
+    'B.E./B.Tech',
+    'Computer Science, Data Science, Public Policy, Economics, Engineering',
+    70.0,
+    26,
+    'New Delhi',
+    CURRENT_DATE - INTERVAL '7 day',
+    CURRENT_DATE + INTERVAL '8 day',
+    'https://niti.gov.in/internship',
+    'https://www.niti.gov.in/career/internship',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    12,
+    'National Informatics Centre (NIC) e-Governance Technology Internship Program',
+    'INTERNSHIP',
+    'Ministry of Electronics & Information Technology (MeitY)',
+    'Hands-on internship program for engineering and MCA students on real national e-governance platforms (Aadhaar, DigiLocker, UPI, e-Courts). Monthly stipend provided for meritorious projects.',
+    'Pursuing pre-final or final year B.E./B.Tech (CSE/IT/ECE) or MCA/M.Sc (CS) with minimum 60% aggregate. Experience with Java, Spring Boot, or React is highly encouraged.',
+    'B.E./B.Tech',
+    'Computer Science, Information Technology, Electronics',
+    60.0,
+    26,
+    'Bengaluru, Karnataka',
+    CURRENT_DATE - INTERVAL '8 day',
+    CURRENT_DATE + INTERVAL '22 day',
+    'https://www.nic.in/internship',
+    'https://meity.gov.in/schemes',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    13,
+    'Ministry of External Affairs (MEA) Summer Internship Program',
+    'INTERNSHIP',
+    'Ministry of External Affairs, Government of India',
+    'Internship program introducing Indian youth to foreign policy formulation, diplomatic communication, and international relations. Includes an honorarium of Rs. 10,000 per month.',
+    'Indian citizen enrolled in a recognized university or college pursuing graduation or post-graduation. Age limit is 25 years as on 31st December.',
+    'Any Graduate',
+    'Any Discipline',
+    60.0,
+    25,
+    'New Delhi',
+    CURRENT_DATE - INTERVAL '16 day',
+    CURRENT_DATE + INTERVAL '5 day',
+    'https://www.mea.gov.in/internship.htm',
+    'https://internship.mea.gov.in',
+    'CLOSING_SOON',
+    TRUE,
+    TRUE
+) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more
+2026-10-27 01:06:18.612143+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "22 day"; SQL statement:
+INSERT INTO opportunities (
+    id, title, category, organization, description, eligibility_criteria,
+    required_qualification, allowed_disciplines, min_percentage, max_age,
+    location, application_start_date, application_deadline,
+    official_application_url, source_url, status, is_verified, is_sample_data
+) VALUES
+(
+    14,
+    'GATE 2027 - Graduate Aptitude Test in Engineering',
+    'COMPETITIVE_EXAM',
+    'Indian Institute of Science (IISc) / IITs for National Coordination Board',
+    'National level entrance examination that tests the comprehensive understanding of various undergraduate subjects in engineering and technology for admission into Masters & Doctoral programs and PSU recruitment.',
+    'Currently studying in the 3rd or higher years of any undergraduate degree program or already completed any government approved degree program in Engineering/Technology/Architecture/Science.',
+    'B.E./B.Tech',
+    'Computer Science, Electrical, Mechanical, Civil, Electronics',
+    50.0,
+    NULL,
+    'All India',
+    CURRENT_DATE - INTERVAL '22 day',
+    CURRENT_DATE + INTERVAL '35 day',
+    'https://gate.iisc.ac.in',
+    'https://gate.iisc.ac.in/notifications',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    15,
+    'Combined Defence Services Examination (UPSC CDS I 2027)',
+    'COMPETITIVE_EXAM',
+    'Union Public Service Commission (UPSC)',
+    'National examination conducted for recruitment into Indian Military Academy (IMA), Indian Naval Academy (INA), Air Force Academy (AFA), and Officers Training Academy (OTA).',
+    'For IMA/OTA: Degree of a recognized University. For INA: Degree in Engineering. For AFA: Degree in Engineering or Degree with Physics & Math at 10+2. Age between 19 and 24 years.',
+    'Any Graduate',
+    'Any Discipline',
+    50.0,
+    24,
+    'All India',
+    CURRENT_DATE - INTERVAL '9 day',
+    CURRENT_DATE + INTERVAL '19 day',
+    'https://upsconline.nic.in',
+    'https://upsc.gov.in/examinations/cds',
+    'ACTIVE',
+    TRUE,
+    TRUE
+),
+(
+    16,
+    'UGC National Eligibility Test (UGC NET) for Assistant Professor & JRF',
+    'COMPETITIVE_EXAM',
+    'National Testing Agency (NTA)',
+    'Determining the eligibility of Indian nationals for ''Assistant Professor'' and ''Junior Research Fellowship and Assistant Professor'' in Indian universities and colleges.',
+    'Candidates who have secured at least 55% marks in Master Degree or equivalent examination from universities/institutions recognized by UGC. No upper age limit for Assistant Professor.',
+    'Post Graduate',
+    'Humanities, Social Sciences, Computer Applications, Commerce',
+    55.0,
+    30,
+    'All India',
+    CURRENT_DATE - INTERVAL '15 day',
+    CURRENT_DATE + INTERVAL '20 day',
+    'https://ugcnet.nta.nic.in',
+    'https://www.ugcnetonline.in',
+    'ACTIVE',
+    TRUE,
+    TRUE
+) [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more
+2026-10-27 01:06:18.615704+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "INTERVAL" constant "3 day"; SQL statement:
+INSERT INTO application_tracking (user_id, opportunity_id, status, notes, applied_date) VALUES
+(1, 1, 'PLANNING_TO_APPLY', 'Gathering required documents and eligibility certificates for submission', NULL),
+(1, 9, 'INTERESTED', 'Reviewing eligibility criteria and preparing research statement', NULL),
+(1, 14, 'APPLIED', 'Application form submitted successfully', CURRENT_DATE - INTERVAL '3 day')
+ON CONFLICT DO NOTHING [22007-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.command.Parser.readInterval(Parser.java:5374)
+	at org.h2.command.Parser.readTermWithoutIdentifier(Parser.java:4970)
+	at org.h2.command.Parser.readTerm(Parser.java:4834)
+	at org.h2.command.Parser.readFactor(Parser.java:3337)
+	at org.h2.command.Parser.readSum(Parser.java:3329)
+	at org.h2.command.Parser.readConcat(Parser.java:3289)
+	at org.h2.command.Parser.readCondition(Parser.java:3079)
+	at org.h2.command.Parser.readExpression(Parser.java:2999)
+	at org.h2.command.Parser.readExpressionOrDefault(Parser.java:2985)
+	at org.h2.command.Parser.parseValuesForCommand(Parser.java:1704)
+	at org.h2.command.Parser.parseInsert(Parser.java:1569)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at RunSeed.main(RunSeed.java:29)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.h2.value.TypeInfo.getValueType()" because "<local3>" is null
+	at org.h2.command.Parser.readInterval(Parser.java:5368)
+	... 20 more

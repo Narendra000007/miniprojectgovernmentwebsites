@@ -1,16 +1,16 @@
 -- Centralized Government Opportunity Platform
--- Seed Data for Phase 2 College Mini-Project Demonstration
+-- Seed Data: Initial Dataset
 -- Contains realistic records across 5 Government Opportunity Categories:
 -- 1. Recruitment, 2. Scholarships, 3. Fellowships, 4. Internships, 5. Competitive Exams
 
 -- Seed Default Demo User
 INSERT INTO users (id, username, full_name, email) VALUES
-(1, 'narendra_sit', 'Narendra Kumar Yadav', '1si24cs114@sit.ac.in')
+(1, 'demo_user', 'Demo User', 'demo@govopps.in')
 ON CONFLICT (id) DO NOTHING;
 
--- Seed Default Demo User Profile (SIT CSE Student)
+-- Seed Default Demo User Profile
 INSERT INTO user_profiles (id, user_id, highest_qualification, discipline, graduation_year, percentage_or_cgpa, age, category, state_of_residence, preferred_location, preferred_categories, skills_and_interests) VALUES
-(1, 1, 'B.E./B.Tech', 'Computer Science and Engineering', 2027, 8.45, 21, 'General', 'Karnataka', 'All India', 'RECRUITMENT,INTERNSHIP,FELLOWSHIP,COMPETITIVE_EXAM', 'Java, Full Stack Web Development, Cloud Computing, Algorithms, Public Policy')
+(1, 1, 'B.E./B.Tech', 'Computer Science and Engineering', 2026, 8.00, 22, 'General', 'Karnataka', 'All India', 'RECRUITMENT,INTERNSHIP,FELLOWSHIP,COMPETITIVE_EXAM', 'Java, Full Stack Web Development, Cloud Computing, Algorithms, Data Structures')
 ON CONFLICT (id) DO NOTHING;
 
 -- 1. GOVERNMENT RECRUITMENT OPPORTUNITIES
@@ -174,7 +174,7 @@ INSERT INTO opportunities (
     'SCHOLARSHIP',
     'Social Welfare & Backward Classes Welfare Dept, Govt of Karnataka',
     'Direct benefit transfer (DBT) scholarship for post-matric and professional course students studying in recognized colleges across Karnataka.',
-    'Domicile of Karnataka. Pursuing recognized diploma, graduate, or postgraduate degree in Karnataka (including SIT Tumakuru). Valid income and caste certificates required.',
+    'Domicile of Karnataka. Pursuing recognized diploma, graduate, or postgraduate degree from an institution in Karnataka. Valid income and caste certificates required.',
     'Any Graduate',
     'Any Discipline',
     50.0,
@@ -382,7 +382,7 @@ ON CONFLICT DO NOTHING;
 
 -- Seed Initial Application Tracking for Demo User
 INSERT INTO application_tracking (user_id, opportunity_id, status, notes, applied_date) VALUES
-(1, 1, 'PLANNING_TO_APPLY', 'Gathering transcripts and GATE scorecard for submission', NULL),
-(1, 9, 'INTERESTED', 'Research proposal draft in progress for IIT supervisor nomination', NULL),
-(1, 14, 'APPLIED', 'Form submitted with application sequence GATE-2027-CS-89211', CURRENT_DATE - INTERVAL '3 day')
+(1, 1, 'PLANNING_TO_APPLY', 'Gathering required documents and eligibility certificates for submission', NULL),
+(1, 9, 'INTERESTED', 'Reviewing eligibility criteria and preparing research statement', NULL),
+(1, 14, 'APPLIED', 'Application form submitted successfully', CURRENT_DATE - INTERVAL '3 day')
 ON CONFLICT DO NOTHING;
